@@ -170,3 +170,67 @@
 //         return ans;
 //     }
 
+//Subset Sum-1
+// void getAns(vector<int>num,int index,int sum,vector<int>&ds,int n){
+// 	if(index==n){
+// 		ds.push_back(sum);
+// 		return;
+// 	}
+
+// 	getAns(num,index+1,sum+num[index],ds,n);
+// 	getAns(num,index+1,sum,ds,n);
+// }
+// vector<int> subsetSum(vector<int> &num){
+//     vector<int>ds;
+// 	int n=num.size();
+// 	getAns(num,0,0,ds,n);
+// 	sort(ds.begin(),ds.end());
+// 	return ds;
+// }
+
+//Subset Sum 2
+//     void getAns(vector<int>nums,int index,vector<int>ds,vector<vector<int>>&ans,int n){
+//         ans.push_back(ds);
+//         for(int i=index;i<n;i++){
+//             if(i>index && nums[i-1]==nums[i]){
+//                 continue;
+//             }
+//                 ds.push_back(nums[i]);
+//                 getAns(nums,i+1,ds,ans,n);
+//                 ds.pop_back();
+//         }
+//     }
+//     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+//         vector<vector<int>>ans;
+//         vector<int>ds;
+//         int n=nums.size();
+//         sort(nums.begin(),nums.end());
+//         getAns(nums,0,ds,ans,n);
+//         return ans;
+//     }
+
+//Letter combinations of a phone number.
+// void getAns(string&digits,string*mapping,int index,string output,vector<string>&ans,int&n){
+//     if(index==n){
+//         ans.push_back(output);
+//         return;
+//     }
+//     int number=digits[index]-'0';
+//     string combination=mapping[number];
+//     for(int i=0;i<combination.length();i++){
+//         output.push_back(combination[i]);
+//         getAns(digits,mapping,index+1,output,ans,n);
+//         output.pop_back();
+//     }
+// }
+//     vector<string> letterCombinations(string digits) {
+//         string mapping[10]={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+//         vector<string>ans;
+//         string output="";
+//         int n=digits.length();
+//         if(n==0){
+//             return ans;
+//         }
+//         getAns(digits,mapping,0,output,ans,n);
+//         return ans;
+//     }
