@@ -176,3 +176,76 @@
 //     }
 //     return dp[n-1];
 // }
+
+//House Robber 1
+//Recursive Solution- Produces TLE
+// class Solution {
+// public:
+//     int getAns(vector<int>&nums,int n){
+//         if(n==0)return nums[0];
+//         if(n<0)return 0;
+//         int pick=nums[n]+getAns(nums,n-2);
+//         int notPick=getAns(nums,n-1);
+//         return max(pick,notPick);
+//     }
+//     int rob(vector<int>& nums) {
+//         int n=nums.size();
+//         return getAns(nums,n-1);
+//     }
+// };
+
+// Since there are overlapping subproblems we can use memoization.
+// class Solution{
+//     public:
+//     int getAns(vector<int>&nums,int n,vector<int>&dp){
+//         if(n==0)return nums[0];
+//         if(n<0)return 0;
+//         if(dp[n]!=-1)return dp[n];
+//         int pick=nums[n]+getAns(nums,n-2,dp);
+//         int notpick=getAns(nums,n-1,dp);
+//         return dp[n]=max(pick,notpick);
+//     }
+//     int rob(vector<int>&nums){
+//         int n=nums.size();
+//         vector<int>dp(n,-1);
+//         return getAns(nums,n-1,dp);
+//     }
+// };
+
+//Using Tabulation without space optimisation
+// class Solution{
+//     public:
+//     int rob(vector<int>&nums){
+//         int n=nums.size();
+//         vector<int>dp(n);
+//         dp[0]=nums[0];
+//         for(int i=1;i<n;i++){
+//             int pick=nums[i];
+//             if(i>1){
+//               pick+=dp[i-2];
+//             }
+//             int notpick=dp[i-1];
+//             dp[i]=max(pick,notpick);
+//         }
+//         return dp[n-1];
+//     }
+// };
+
+//Tabulation- Using space optimisation
+// class Solution{
+//     public:
+//     int rob(vector<int>&nums){
+//        int prev=nums[0],prev2=0,n=nums.size();
+//        for(int i=1;i<n;i++){
+//         int pick=nums[i];
+//         if(i>1){
+//             pick+=prev2;
+//         }
+//         int notPick=prev;
+//         int curri=max(pick,notPick);
+//         prev2=prev;
+//         prev=curri;
+//        }
+//        return prev;
+//     }
+// };
