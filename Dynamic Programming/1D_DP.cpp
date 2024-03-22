@@ -249,3 +249,57 @@
 //        return prev;
 //     }
 // };
+
+//House Robber 2
+
+//Tabulation Solution- Without using space optimisation
+// class Solution {
+// public:
+//     int getAns(const vector<int>&nums,int n){
+//         vector<int>dp(n);
+//         dp[0]=nums[0];
+//         for(int i=1;i<n;i++){
+//             int pick=nums[i];
+//             if(i>1){
+//                 pick+=dp[i-2];
+//             }
+//             int notPick=dp[i-1];
+//             dp[i]=max(pick,notPick);
+//         }
+//         return dp[n-1];
+//     }
+//     int rob(vector<int>& nums) {
+//         if(nums.size()==1){
+//             return nums[0];
+//         }
+//         int withoutFirst=getAns(vector<int>(nums.begin()+1,nums.end()),nums.size()-1);
+//         int withoutLast=getAns(vector<int>(nums.begin(),nums.end()-1),nums.size()-1);
+//         return max(withoutFirst,withoutLast);
+//     }
+// };
+
+//Tabulation Solution- With space optimisation
+// class Solution{
+//     public:
+//     int getAns(const vector<int>&nums,int n){
+//         int prev=nums[0],prev2=0;
+//         for(int i=1;i<n;i++){
+//             int pick=nums[i];
+//             if(i>1){
+//                 pick+=prev2;
+//             }
+//             int notPick=prev;
+//             int curri=max(pick,notPick);
+//             prev2=prev;
+//             prev=curri;
+//         }
+//         return prev;
+//     }
+//     int rob(vector<int>&nums){
+//         int n=nums.size();
+//         if(n==1)return nums[0];
+//         int withoutFirst=getAns(vector<int>(nums.begin()+1,nums.end()),n-1);
+//         int withoutLast=getAns(vector<int>(nums.begin(),nums.end()-1),n-1);
+//         return max(withoutFirst,withoutLast);
+//     }
+// };
