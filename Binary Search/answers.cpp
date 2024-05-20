@@ -247,3 +247,37 @@
 //         return k+high+1;
 //     }
 // };
+
+//Aggressive Cows/Magnetic Force between two balls
+// class Solution {
+// public:
+//     bool isPossible(vector<int>&position,int dist,int m){
+//       int balls=1,last=position[0];
+//       for(int i=1;i<position.size();i++){
+//          if(position[i]-last>=dist){
+//             last=position[i];
+//             balls++;
+//       if(balls>=m){
+//     return true;
+//       }
+//          }
+//       }
+//       return false;
+//     }
+//     int maxDistance(vector<int>& position, int m) {
+//         sort(position.begin(),position.end());
+//         int n=position.size(),limit=position[n-1]-position[0],low=1,ans=limit,high=limit;
+//         while(low<=high){
+//             int mid=low+(high-low)/2;
+//             if(isPossible(position,mid,m)==false){
+//                 high=mid-1;
+//             }
+//             else{
+//                 ans=mid;
+//                 low=mid+1;
+//             }
+//         }
+//         return ans;
+
+//     }
+// };
