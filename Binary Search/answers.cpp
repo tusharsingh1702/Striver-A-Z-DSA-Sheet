@@ -281,3 +281,37 @@
 
 //     }
 // };
+
+//Allocate books
+// int getStudents(vector<int>&arr,int pages,int n){
+//     long long student=1,nPages=0;
+//     for(int i=0;i<n;i++){
+//         if(nPages+arr[i]<=pages){
+//             nPages+=arr[i];
+//         }
+//         else{
+//             student++;
+//             nPages=arr[i];
+//         }
+//     }
+//     return student;
+// }
+// int findPages(vector<int>& arr, int n, int m) {
+//     if(m>n){
+//         return -1;
+//     }
+// long long low=*max_element(arr.begin(),arr.end()),high=accumulate(arr.begin(),arr.end(),0);
+// long long ans=high;
+// while(low<=high){
+//     int mid=low+(high-low)/2;
+//     int students=getStudents(arr,mid,n);
+//     if(students>m){
+//         low=mid+1;
+//     }
+//     else{
+//         high=mid-1;
+//     }
+// }
+// return low;
+// }
+
