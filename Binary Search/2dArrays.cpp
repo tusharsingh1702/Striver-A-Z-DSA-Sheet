@@ -30,3 +30,63 @@
 //          return false;
 //     }
 // };
+
+//Search a 2D matrix II
+// class Solution {
+// public:
+//     bool searchMatrix(vector<vector<int>>& matrix, int target) {
+//         int row=0,col=matrix[0].size()-1,n=matrix.size();
+//         while(row<n && col>=0){
+//             if(matrix[row][col]==target){
+//                 return true;
+//             }
+//             else if(matrix[row][col]<target){
+//                 row++;
+//             }
+//             else{
+//                 col--;
+//             }
+//         }
+//         return false;
+//     }
+// };
+
+//Find peak element (2D matrix)
+// class Solution {
+// public:
+//     int findMaxRow(vector<vector<int>>&mat,int col){
+//         int index=-1,maxElement=INT_MIN;
+//         for(int i=0;i<mat.size();i++){
+//             if(mat[i][col]>maxElement){
+//                 maxElement=mat[i][col];
+//                 index=i;
+//             }
+//         }
+//         return index;
+//     }
+//     vector<int> findPeakGrid(vector<vector<int>>& mat) {
+//       int low=0,high=mat[0].size()-1;
+//       vector<int>v;
+//       while(low<=high){
+//         int mid=low+(high-low)/2;
+//         int maxRow=findMaxRow(mat,mid);
+//         int left=mid-1>=0?mat[maxRow][mid-1]:-1;
+//         int right=mid+1<mat[0].size()?mat[maxRow][mid+1]:-1;
+//         if(mat[maxRow][mid]>left && mat[maxRow][mid]>right){
+//             v.push_back(maxRow);
+//             v.push_back(mid);
+//             return v;
+//         }
+//         if(left>mat[maxRow][mid]){
+//             high=mid-1;
+//         }
+//         else{
+//             low=mid+1;
+//         }
+//       }
+//       v.push_back(-1);
+//       v.push_back(-1);
+//       return v;
+
+//     }
+// };
