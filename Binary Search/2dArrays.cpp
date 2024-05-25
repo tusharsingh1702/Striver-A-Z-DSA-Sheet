@@ -90,3 +90,44 @@
 
 //     }
 // };
+
+//Matrix Median
+class Solution{   
+public:
+    void findHighLow(vector<vector<int>>&matrix,int&low,int&high){
+        int m=matrix.size(),n=matrix[0].size();
+        int maxi=INT_MIN,mini=INT_MAX;
+        for(int i=0;i<m;i++){
+            mini=min(mini,matrix[i][0]);
+        }
+        for(int i=0;i<m;i++){
+            maxi=max(maxi,matrix[i][n-1]);
+        }
+        low=mini;high=maxi;
+    }
+    int findCount(vector<vector<int>>&matrix,int mid,int R,int C){
+        int count=0;
+        for(int i=0;i<R;i++){
+            int up=upper_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin();
+            count+=up;
+        }
+        return count;
+    }
+    int median(vector<vector<int>> &matrix, int R, int C){
+        int low,high;
+        findHighLow(matrix,low,high);
+        // cout<<low<<endl;
+        // cout<<high<<endl;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            int count=findCount(matrix,mid,R,C);
+            if(count<=(R*C)/2){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return low;
+    }
+};
