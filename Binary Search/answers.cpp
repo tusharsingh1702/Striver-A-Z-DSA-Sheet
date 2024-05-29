@@ -315,3 +315,37 @@
 // return low;
 // }
 
+//Split Array largest sum.
+// class Solution {
+// public:
+//     int getSubarrays(vector<int>&nums,int limit){
+//         int subarrays=1,sum=0;
+//         for(auto it:nums){
+//             if(sum+it<=limit){
+//                 sum+=it;
+//             }
+//             else{
+//                 subarrays++;
+//                 sum=it;
+//             }
+//         }
+//         return subarrays;
+//     }
+//     int splitArray(vector<int>& nums, int k) {
+//         if(k>nums.size()){
+//             return -1;
+//         }
+//         long long low=*max_element(nums.begin(),nums.end()),high=accumulate(nums.begin(),nums.end(),0);
+//         while(low<=high){
+//             int mid=low+(high-low)/2;
+//             int subarrays=getSubarrays(nums,mid);
+//             if(subarrays>k){
+//                 low=mid+1;
+//             }
+//             else{
+//                 high=mid-1;
+//             }
+//         }
+//         return low;
+//     }
+// };
