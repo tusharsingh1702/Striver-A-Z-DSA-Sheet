@@ -526,6 +526,128 @@
 // return prev[amount];
 //     }
 
+//0/1 KnapSack Problem
+//Memoization Solution
+// class Solution
+// {
+//     public:
+//     vector<vector<int>>dp;
+//     int getAns(int*wt,int*val,int W,int index){
+//         if(index==0){
+//             if(wt[0]<=W){
+//                 return val[0];
+//             }
+//             return 0;
+//         }
+//         if(dp[index][W]!=-1){
+//             return dp[index][W];
+//         }
+//         int notTake=getAns(wt,val,W,index-1);
+//         int take=INT_MIN;
+//         if(wt[index]<=W){
+//             take=val[index]+getAns(wt,val,W-wt[index],index-1);
+//         }
+//         return dp[index][W]=max(notTake,take);
+//     }
+//     int knapSack(int W, int wt[], int val[], int n) 
+//     { 
+//         dp=vector<vector<int>>(n,vector<int>(W+1,-1));
+//        return getAns(wt,val,W,n-1);
+//     }
+// };
+
+//Tabulation Solution;
+// int knapSack(int W, int wt[], int val[], int n) 
+//     { 
+//         dp=vector<vector<int>>(n,vector<int>(W+1,0));
+//         for(int i=wt[0];i<=W;i++){
+//             dp[0][i]=val[0];
+//         }
+//         for(int index=1;index<n;index++){
+//             for(int weight=0;weight<=W;weight++){
+//                 int notTake=dp[index-1][weight];
+//                 int take=INT_MIN;
+//                 if(wt[index]<=weight){
+//                 take=val[index]+dp[index-1][weight-wt[index]];
+//                 }
+//             dp[index][weight]=max(notTake,take);
+//             }
+//         }
+//        return dp[n-1][W];
+//     }
+
+//Unbounded Knapsack
+//Memoization Solution
+// class Solution{
+// public:
+//     vector<vector<int>>dp;
+//     int getAns(int*val,int*wt,int index,int W){
+//         if(index==0){
+//             int n=W/wt[0];
+//             return val[0]*n;
+//         }
+//         if(dp[index][W]!=-1){
+//             return dp[index][W];
+//         }
+//         //not taken
+//         int notTaken=getAns(val,wt,index-1,W);
+//         int taken=INT_MIN;
+//         if(wt[index]<=W){
+//             taken=val[index]+getAns(val,wt,index,W-wt[index]);
+//         }
+//         return dp[index][W]=max(notTaken,taken);
+//     }
+//     int knapSack(int N, int W, int val[], int wt[])
+//     {
+//         dp=vector<vector<int>>(N,vector<int>(W+1,-1));
+//         return getAns(val,wt,N-1,W);
+//     }
+// };
+
+//Tabulation Solution
+// int knapSack(int N, int W, int val[], int wt[])
+//     {
+//         dp=vector<vector<int>>(N,vector<int>(W+1,0));
+//         for(int i=wt[0];i<=W;i++){
+//             int n=i/wt[0];
+//             dp[0][i]=n*val[0];
+//         }
+//         for(int index=1;index<N;index++){
+//             for(int weight=0;weight<=W;weight++){
+//                 int notTaken=dp[index-1][weight];
+//                 int taken=INT_MIN;
+//                 if(wt[index]<=weight){
+//                 taken=val[index]+dp[index][weight-wt[index]];
+//                 }
+//             dp[index][weight]=max(notTaken,taken);
+//             }
+//         }
+//         return dp[N-1][W];
+//     }
+
+//Space Optimisation
+// int knapSack(int N, int W, int val[], int wt[])
+//     {
+//         curr=vector<int>(W+1,0);
+//         prev=vector<int>(W+1,0);
+//         for(int i=wt[0];i<=W;i++){
+//             int n=i/wt[0];
+//             prev[i]=n*val[0];
+//         }
+//         for(int index=1;index<N;index++){
+//             for(int weight=0;weight<=W;weight++){
+//                 int notTaken=prev[weight];
+//                 int taken=INT_MIN;
+//                 if(wt[index]<=weight){
+//                 taken=val[index]+curr[weight-wt[index]];
+//                 }
+//             curr[weight]=max(notTaken,taken);
+//             }
+//             prev=curr;
+//         }
+//         return prev[W];
+//     }
+
 
 
 
