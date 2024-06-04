@@ -648,6 +648,47 @@
 //         return prev[W];
 //     }
 
+//Target Sum(Tabulation Solution)
+// class Solution {
+// public:
+// vector<vector<int>>dp;
+//  int countPartitions(int n, int d, vector<int>& arr) {
+//         long long totalSum=accumulate(arr.begin(),arr.end(),0);
+//         int reqdSum=totalSum-d;
+//         if(reqdSum<0 || reqdSum%2!=0){
+//             return 0;
+//         }
+//         reqdSum/=2;
+//         dp=vector<vector<int>>(n,vector<int>(reqdSum+1,0));
+//         for(int i=0;i<n;i++){
+//             dp[i][0]=1;
+//         }
+//         if(arr[0]==0){
+//             dp[0][0]=2;
+//         }
+//         if(arr[0]<=reqdSum && arr[0]!=0){
+//             dp[0][arr[0]]=1;
+//         }
+//         for(int index=1;index<n;index++){
+//             for(int target=0;target<=reqdSum;target++){
+//                 int notTake=dp[index-1][target];
+//                 int take=0;
+//                 if(arr[index]<=target){
+//                 take=dp[index-1][target-arr[index]];
+//                 }
+//                 dp[index][target]=(notTake+take);
+//             }
+//         }
+        
+//         return dp[n-1][reqdSum];
+//     }
+//     int findTargetSumWays(vector<int>& nums, int target) {
+//         //S1-S2=target //S1+S2=totalSum
+//         // S2=totalSum-target/2
+//        return countPartitions(nums.size(),target,nums);
+
+//     }
+// };
 
 
 
