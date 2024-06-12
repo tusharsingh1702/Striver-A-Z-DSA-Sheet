@@ -743,5 +743,94 @@
 //     }
 // };
 
+//Distinct Subsequences
+// class Solution {
+// public:
+//     int numDistinct(string s, string t) {
+//         int n1=s.length(),n2=t.length();
+//         vector<double>prev(n2+1,0),curr(n2+1,0);
+//         prev[0]=curr[0]=1;
+//         for(int i=1;i<=n1;i++){
+//             for(int j=1;j<=n2;j++){
+//                  if(s[i-1]==t[j-1]){
+//                 curr[j]=prev[j-1]+prev[j];
+//                 }
+//         else{
+//             curr[j]=prev[j];
+//         }
+//             }
+//             prev=curr;
+//         }
+//         return (int)prev[n2];
+//     }
+// };
+
+//Edit Distance
+// class Solution {
+// public:
+//     int minDistance(string word1, string word2) {
+//         int n1=word1.length(),n2=word2.length();
+//         vector<int>prev(n2+1,0),curr(n2+1,0);
+//         for(int i=0;i<=n2;i++){
+//             prev[i]=i;
+//         }
+//         for(int i=1;i<=n1;i++){
+//             //This line is very very important.
+//             curr[0]=i;
+//             for(int j=1;j<=n2;j++){
+//                  if(word1[i-1]==word2[j-1]){
+//                     curr[j]=0+prev[j-1];
+//                 }
+//                 else{
+//                     //insert
+//                     int insert=curr[j-1];
+//                     //delete
+//                     int del=prev[j];
+//                     //replace
+//                     int rep=prev[j-1];
+//                     curr[j]=1+min(insert,min(del,rep));
+//                 }
+//             }
+//             prev=curr;
+//         }
+//         return prev[n2];
+//     }
+// };
+
+//Wild Card Matching
+// class Solution {
+// public:
+//     bool isMatch(string s, string p) {
+//         int n1=s.length(),n2=p.length();
+//         vector<bool>prev(n2+1,false),curr(n2+1,false);
+//         prev[0]=true;
+//         for(int i=1;i<=n2;i++){
+//             bool flag=true;
+//             for(int j=1;j<=i;j++){
+//                 if(p[j-1]!='*'){
+//                     flag=false;
+//                     break;
+//                 }
+//             }
+//             prev[i]=flag;
+//         }
+//         for(int i=1;i<=n1;i++){
+//             curr[0]=false;
+//             for(int j=1;j<=n2;j++){
+//                     if(s[i-1]==p[j-1] || p[j-1]=='?'){
+//                         curr[j]=prev[j-1];
+//                     }
+//                     else if(p[j-1]=='*'){
+//                      curr[j]=prev[j] || curr[j-1];
+//                     }
+//                     else{
+//                     curr[j]=false;
+//                     }
+//             }
+//             prev=curr;
+//         }
+//         return prev[n2];
+//     }
+// };
 
 
