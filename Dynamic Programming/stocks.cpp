@@ -138,3 +138,34 @@
 //         return prevYes;
 //     }
 // };
+
+// class Solution {
+// public:
+//     bool getAns(string&s,string&p,int n1,int n2){
+//         if(n1<0 && n2<0){
+//             return true;
+//         }
+//         if(n1>=0 && n2<0){
+//             return false;
+//         }
+//         if(n1<0 && n2>=0){
+//             if(p[n2]=='*'){
+//             return true;
+//             }
+//             return false;
+//         }
+//         if(s[n1]==p[n2] || p[n2]=='.'){
+//             return getAns(s,p,n1-1,n2-1);
+//         }
+//         else if(p[n1]=='*'){
+//             return getAns(s,p,n1-1,n2)||getAns(s,p,n1,n2-1);
+//         }
+//         else{
+//             return false;
+//         }
+//     }
+//     bool isMatch(string s, string p) {
+//         int n1=s.length(),n2=p.length();
+//         return getAns(s,p,n1-1,n2-1);
+//     }
+// };
