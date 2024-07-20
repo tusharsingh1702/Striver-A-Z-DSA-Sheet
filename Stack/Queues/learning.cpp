@@ -169,3 +169,58 @@
 //         delete temp;
 //         return x;
 // }
+
+// Check for balanced parenthesis
+// class Solution {
+// public:
+//     bool isValid(string s) {
+//         stack<char>stk;
+//         for(char c:s){
+//             if(c=='(' || c=='[' || c=='{'){
+//                 stk.push(c);
+//             }
+//             else if( !stk.empty() && ((c==')' && stk.top()=='(') || (c=='}' && stk.top()=='{') || (c==']' && stk.top()=='['))){
+//                 stk.pop();
+//             }
+//             else{
+//                 return false;
+//             }
+//         }
+//         return stk.empty();
+//     }
+// };
+
+// Implement min stack
+// class MinStack {
+// public:
+//     stack<pair<int,int>>stk;
+//     MinStack() {
+        
+//     }
+    
+//     void push(int val) {
+//         if(stk.empty()){
+//             stk.push({val,val});
+//         }
+//         else{
+//             if(val<stk.top().second){
+//                 stk.push({val,val});
+//             }
+//             else{
+//                 stk.push({val,stk.top().second});
+//             }
+//         }
+//     }
+    
+//     void pop() {
+//         stk.pop();
+//     }
+    
+//     int top() {
+//         return stk.top().first;
+//     }
+    
+//     int getMin() {
+//         return stk.top().second;
+//     }
+// };
