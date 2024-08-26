@@ -31,6 +31,42 @@
 //         return ans;
 //     }
 
+// M Coloring Problem
+// class Solution{
+// public:
+//     // Function to determine if graph can be coloured with at most M colours such
+//     // that no two adjacent vertices of graph are coloured with same colour.
+//     bool isSafe(int node,bool graph[101][101],int i,int*color,int n){
+//             for(int k=0;k<n;k++){
+//                 if(k!=node && graph[k][node]==1 && color[k]==i){
+//                     return false;
+//                 }
+//             }
+//             return true;
+//     }
+//     bool getAns(int node,bool graph[101][101],int*color,int m,int n){
+//         if(node==n){
+//             return true;
+//         }
+//         for(int i=1;i<=m;i++){
+//             if(isSafe(node,graph,i,color,n)){
+//                 color[node]=i;
+//                if(getAns(node+1,graph,color,m,n)){
+//                    return true;
+//                }
+//                else{
+//                    color[node]=0;
+//                }
+//             }
+//         }
+//         return false;
+//     }
+//     bool graphColoring(bool graph[101][101], int m, int n) {
+//         int color[n]={0};
+//         return getAns(0,graph,color,m,n);
+//     }
+// };
+
 // Sudoku Solver
 //     void solveSudoku(vector<vector<char>>& board) {
 //          solve(board);

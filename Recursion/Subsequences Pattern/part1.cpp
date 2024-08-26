@@ -1,3 +1,31 @@
+//Generate all parenthesis
+// class Solution {
+// public:
+//     vector<string>ans;
+//         void getAns(string&str,int n,int openCount,int closedCount){
+//             if(str.length()==2*n){
+//                 ans.push_back(str);
+//                 return;
+//             }
+//             if(openCount<n){
+//                 str.push_back('(');
+//                 getAns(str,n,openCount+1,closedCount);
+//                 str.pop_back();
+//             }
+//             if(closedCount<openCount){
+//                 str.push_back(')');
+//                 getAns(str,n,openCount,closedCount+1);
+//                 str.pop_back();
+//             }
+//         }
+//     vector<string> generateParenthesis(int n) {
+//         string str="";
+//         int openCount=0,closedCount=0;
+//         getAns(str,n,openCount,closedCount);
+//         return ans;
+//     }
+// };
+
 //Print all subsequences/ Power set
 // Using recursion
 // #include <iostream>
@@ -74,6 +102,34 @@
 //       vector<int>ds;
 //       getSubsequences(arr,n,0,ds,sum,0);
 //       return 0;
+// }
+
+//Check if there exists a subsequence with sum k
+// vector<vector<int>>dp;
+// bool getAns(vector<int>&a,int sum,int index,int n){
+//     if(sum==0){
+//         return true;
+//     }
+//     if(index==n){
+//         if(sum==0){
+//             return true;
+//         }
+//         return false;
+//     }
+//     if(dp[sum][index]!=-1){
+//         return dp[sum][index];
+//     }
+//     bool notPick=getAns(a,sum,index+1,n);
+//     bool pick=false;
+//     if(a[index]<=sum){
+//         pick=getAns(a,sum-a[index],index+1,n);
+//     }
+//     return dp[sum][index]=notPick||pick;
+// }
+// bool isSubsetPresent(int n, int k, vector<int> &a)
+// {
+//     dp=vector<vector<int>>(k+1,vector<int>(n,-1));
+//         return getAns(a,k,0,n);
 // }
 
 //Combination Sum 1- Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
